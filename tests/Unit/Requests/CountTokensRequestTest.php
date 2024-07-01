@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace GeminiAPI\Tests\Unit\Requests;
 
-use GeminiAPI\Enums\ModelName;
 use GeminiAPI\Enums\Role;
 use GeminiAPI\Requests\CountTokensRequest;
 use GeminiAPI\Resources\Content;
+use GeminiAPI\Resources\ModelName;
 use GeminiAPI\Resources\Parts\TextPart;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;

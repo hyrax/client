@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace GeminiAPI\Tests\Unit\Requests;
 
 use BadMethodCallException;
-use GeminiAPI\Enums\ModelName;
 use GeminiAPI\Enums\TaskType;
 use GeminiAPI\Requests\EmbedContentRequest;
 use GeminiAPI\Resources\Content;
+use GeminiAPI\Resources\ModelName;
 use PHPUnit\Framework\TestCase;
 
 class EmbedContentRequestTest extends TestCase

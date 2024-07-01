@@ -6,7 +6,6 @@ namespace GeminiAPI;
 
 use BadMethodCallException;
 use CurlHandle;
-use GeminiAPI\Enums\ModelName;
 use GeminiAPI\Enums\Role;
 use GeminiAPI\Requests\CountTokensRequest;
 use GeminiAPI\Requests\GenerateContentRequest;
@@ -29,7 +28,7 @@ class GenerativeModel
 
     public function __construct(
         private readonly Client $client,
-        public readonly ModelName $modelName,
+        public readonly string $modelName,
     ) {
     }
 

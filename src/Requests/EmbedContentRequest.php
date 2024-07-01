@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace GeminiAPI\Requests;
 
 use BadMethodCallException;
-use GeminiAPI\Enums\ModelName;
 use GeminiAPI\Enums\TaskType;
 use GeminiAPI\Resources\Content;
 use JsonSerializable;
@@ -15,15 +14,11 @@ use function json_encode;
 class EmbedContentRequest implements JsonSerializable, RequestInterface
 {
     public function __construct(
-        public readonly ModelName $modelName,
+        public readonly string $modelName,
         public readonly Content $content,
         public readonly ?TaskType $taskType = null,
         public readonly ?string $title = null,
     ) {
-        if (isset($this->taskType) && $this->modelName !== ModelName::Embedding) {
-            throw new BadMethodCallException('TaskType can only be set when ModelName is Embedding');
-        }
-
         if (isset($this->title) && $this->taskType !== TaskType::RETRIEVAL_DOCUMENT) {
             throw new BadMethodCallException('Title is only applicable when TaskType is RETRIEVAL_DOCUMENT');
         }
@@ -31,7 +26,7 @@ class EmbedContentRequest implements JsonSerializable, RequestInterface
 
     public function getOperation(): string
     {
-        return "{$this->modelName->value}:embedContent";
+        return "{$this->modelName}:embedContent";
     }
 
     public function getHttpMethod(): string

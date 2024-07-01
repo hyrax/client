@@ -7,7 +7,6 @@ namespace GeminiAPI;
 use BadMethodCallException;
 use CurlHandle;
 use GeminiAPI\ClientInterface as GeminiClientInterface;
-use GeminiAPI\Enums\ModelName;
 use GeminiAPI\Json\ObjectListParser;
 use GeminiAPI\Requests\CountTokensRequest;
 use GeminiAPI\Requests\EmbedContentRequest;
@@ -57,17 +56,7 @@ class Client implements GeminiClientInterface
         $this->streamFactory ??= Psr17FactoryDiscovery::findStreamFactory();
     }
 
-    public function geminiPro(): GenerativeModel
-    {
-        return $this->generativeModel(ModelName::GeminiPro);
-    }
-
-    public function geminiProVision(): GenerativeModel
-    {
-        return $this->generativeModel(ModelName::GeminiProVision);
-    }
-
-    public function generativeModel(ModelName $modelName): GenerativeModel
+    public function generativeModel(string $modelName): GenerativeModel
     {
         return new GenerativeModel(
             $this,
@@ -75,7 +64,7 @@ class Client implements GeminiClientInterface
         );
     }
 
-    public function embeddingModel(ModelName $modelName): EmbeddingModel
+    public function embeddingModel(string $modelName): EmbeddingModel
     {
         return new EmbeddingModel(
             $this,

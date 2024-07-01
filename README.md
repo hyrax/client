@@ -260,9 +260,7 @@ This code will print "Hello World!" to the standard output.
 ### Embed Content
 
 ```php
-use GeminiAPI\Client;
-use GeminiAPI\Enums\ModelName;
-use GeminiAPI\Resources\Parts\TextPart;
+use GeminiAPI\Client;use GeminiAPI\Resources\ModelName;use GeminiAPI\Resources\Parts\TextPart;
 
 $client = new Client('GEMINI_API_KEY');
 $response = $client->embeddingModel(ModelName::Embedding)
